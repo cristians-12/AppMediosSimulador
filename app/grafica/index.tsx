@@ -1,10 +1,12 @@
-import { ThemedText } from '@/components/ThemedText'
+import { container } from '@/constants/Styles'
 import React from 'react'
-import { Text } from 'react-native'
+import { Text, View } from 'react-native'
 
 const index = () => {
   return (
-    <Text>Hola</Text>
+    <View style={container}>
+      <Text>Hola</Text>
+    </View>
   )
 }
 

@@ -1,9 +1,16 @@
 import { Stack, Tabs } from "expo-router";
 import FontAwesome from '@expo/vector-icons/FontAwesome';
+import { useFonts } from "expo-font";
 
 export default function RootLayout() {
+
+  useFonts({
+    Poppins: require('../assets/fonts/Poppins-Medium.ttf'),
+    PoppinsBold: require('../assets/fonts/Poppins-Bold.ttf')
+  })
+
   return (
-    <Tabs screenOptions={{ tabBarActiveTintColor: 'red', headerShown:false }}>
+    <Tabs screenOptions={{ tabBarActiveTintColor: 'red', headerShown: false }}>
       <Tabs.Screen
         name="index"
         options={{
