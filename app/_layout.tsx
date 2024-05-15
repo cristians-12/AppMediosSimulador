@@ -1,6 +1,8 @@
 import { Stack, Tabs } from "expo-router";
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { useFonts } from "expo-font";
+import { barra } from "@/constants/Styles";
+import { BlurView } from "expo-blur";
 
 export default function RootLayout() {
 
@@ -10,7 +12,13 @@ export default function RootLayout() {
   })
 
   return (
-    <Tabs screenOptions={{ tabBarActiveTintColor: 'red', headerShown: false }}>
+    <Tabs screenOptions={{
+      tabBarActiveTintColor: 'red', headerShown: false, tabBarStyle: { position: 'absolute', borderTopLeftRadius: 20, borderTopRightRadius: 20, bottom: 0 },
+      tabBarBackground: (() => (
+        <BlurView intensity={80} style={{ overflow: "hidden", backgroundColor: 'tranparent', borderTopLeftRadius: 20, borderTopRightRadius: 20, }} />
+      ))
+    }}
+    >
       <Tabs.Screen
         name="index"
         options={{

@@ -6,11 +6,31 @@ export const container: ViewStyle = {
     alignItems: "center",
    
 }
+export const container1: ViewStyle = {
+    // flex: 1,
+    // justifyContent: "center",
+    // alignItems: "center",
+   padding: 50
+}
 
 export const texto = {
-    fontFamily: 'Poppins'
+    fontFamily: 'Poppins',
+    fontSize: 18
 }
 export const title = {
     fontFamily: 'PoppinsBold',
     fontSize: 25
+}
+
+export const barra = {
+    backgroundColor: 'transparent'
+}
+
+export const input = {
+    borderWidth: 1,
+    borderColor: 'gray',
+    borderRadius: 20,
+    width: 150,
+    padding: 5, 
+    fontFamily: 'Poppins',
 }
