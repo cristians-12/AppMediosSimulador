@@ -30,7 +30,13 @@ export const input = {
     borderWidth: 1,
     borderColor: 'gray',
     borderRadius: 20,
-    width: 150,
+    width: 250,
     padding: 5, 
     fontFamily: 'Poppins',
+}
+
+export const opcion = {
+    backgroundColor: 'red',
+    borderRadius: 20,
+    padding: 10
 }

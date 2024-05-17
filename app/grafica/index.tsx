@@ -1,11 +1,11 @@
-import { container } from '@/constants/Styles'
+import { container, texto } from '@/constants/Styles'
 import React from 'react'
 import { Text, View } from 'react-native'
 
 const index = () => {
   return (
     <View style={container}>
-      <Text>Hola</Text>
+      <Text style={texto}>GRAFICA</Text>
     </View>
   )
 }
