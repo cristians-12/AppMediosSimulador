@@ -36,7 +36,9 @@ export const input = {
 }
 
 export const opcion = {
-    backgroundColor: 'red',
+    backgroundColor: '#9b40bf',
     borderRadius: 20,
-    padding: 10
+    padding: 10,
+    color: 'white',
+    margin: 10
 }

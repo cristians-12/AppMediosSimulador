@@ -12,7 +12,7 @@ export default function Index() {
   return (
     <View style={container}>
       <Text style={texto}>Seleccione el tipo de linea de transmision: </Text>
-      <TouchableOpacity style={opcion} onPress={() => {setMostrar(true); setShowPlaca(false)}}>
+      <TouchableOpacity style={opcion} onPress={() => { setMostrar(true); setShowPlaca(false) }}>
         <Text style={texto}>Cable coaxial</Text>
       </TouchableOpacity>
       <TouchableOpacity style={opcion} onPress={() => {

@@ -13,7 +13,7 @@ export default function RootLayout() {
 
   return (
     <Tabs screenOptions={{
-      tabBarActiveTintColor: 'red', headerShown: false, tabBarStyle: { position: 'absolute', borderTopLeftRadius: 20, borderTopRightRadius: 20, bottom: 0 },
+      tabBarActiveTintColor: '#c38cd9', headerShown: false, tabBarStyle: { position: 'absolute', borderTopLeftRadius: 20, borderTopRightRadius: 20, bottom: 0 },
       tabBarBackground: (() => (
         <BlurView intensity={80} style={{ overflow: "hidden", backgroundColor: 'tranparent', borderTopLeftRadius: 20, borderTopRightRadius: 20, }} />
       ))
