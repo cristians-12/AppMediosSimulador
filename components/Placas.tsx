@@ -1,13 +1,16 @@
-import { input } from '@/constants/Styles'
+import { container, imagen, input } from '@/constants/Styles'
 import React from 'react'
-import { Text, TextInput, View } from 'react-native'
+import { Image, Text, TextInput, View } from 'react-native'
+import BackButton from './BackButton'
 
-const Placas = () => {
+const Placas = ({ setShowPlaca }) => {
   return (
-    <View>
-    {/* <Text>Coaxial</Text> */}
-    <TextInput placeholder='Ingrese la longitud de las placas' style={input} keyboardType="number-pad" />
-</View>
+    <View style={container}>
+      {/* <Text>Coaxial</Text> */}
+      {/* <Image source={{ uri: 'url' }} style={imagen} /> */}
+      <TextInput placeholder='Ingrese la longitud de las placas' style={input} keyboardType="number-pad" />
+      <BackButton onPress={()=>setShowPlaca(false)} />
+    </View>
   )
 }
 
