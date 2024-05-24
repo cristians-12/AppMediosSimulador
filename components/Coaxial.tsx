@@ -9,7 +9,14 @@ const Coaxial = ({ setMostrar }) => {
     return (
         <View style={container}>
             <Text style={title} >Cable Coaxial</Text>
-
+            <View>
+                <Text>Radio externo:</Text>
+                <TextInput placeholder='Ingrese el radio externo' style={input} keyboardType="number-pad" />
+            </View>
+            <View>
+                <Text>Radio interno:</Text>
+                <TextInput placeholder='Ingrese el radio interno' style={input} keyboardType="number-pad" />
+            </View>
             <View>
                 <Text>Permeabilidad relativa:</Text>
                 <TextInput placeholder='Ingrese la permeabilidad del medio' style={input} keyboardType="number-pad" />
@@ -22,6 +29,11 @@ const Coaxial = ({ setMostrar }) => {
                 <Text>Frecuencia:</Text>
                 <TextInput placeholder='Ingrese la frecuencia' style={input} keyboardType="number-pad" />
             </View>
+            <View>
+                <Text>Conductividad del material:</Text>
+                <TextInput placeholder='Ingrese la frecuencia' style={input} keyboardType="number-pad" />
+            </View>
+
             <BackButton onPress={() => setMostrar(false)} />
         </View>
     )
