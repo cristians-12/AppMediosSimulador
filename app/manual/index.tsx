@@ -14,6 +14,7 @@ const index = () => {
       <Text style={texto}>3. Verifique que no haya errores.</Text>
       <Text style={texto}>4. Presione el boton de calcular.</Text>
       <Text style={texto}>5. Una vez hecho esto puede apreciar la grafica de perdidas.</Text>
+      <Text style={texto}>IMPORTANTE: Valores bajos debe escribir 0.0000007 por ejemplo</Text>
     </View>
   )
 }

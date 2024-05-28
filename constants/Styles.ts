@@ -39,7 +39,7 @@ export const input = {
   fontFamily: "Poppins",
 };
 
-export const opcion = {
+export const opcion:StyleSheet = {
   backgroundColor: "#9b40bf",
   borderRadius: 20,
   padding: 10,
