@@ -8,5 +8,5 @@ export const useFetchPost = async (url: string, datos: any) => {
     
   });
   const data = await response.json();
-  console.log(data);
+  return data
 };

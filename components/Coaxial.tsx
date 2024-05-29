@@ -6,23 +6,22 @@ import {
   texto,
   title,
 } from "@/constants/Styles";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Text, TextInput, View } from "react-native";
 import BackButton from "./BackButton";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { useFetch, useFetchPost } from "@/hooks/useFetch";
+import { Datos } from "@/constants/datos";
 
-interface Datos {
-  b: number | null;
-  a: number | null;
-  u: number;
-  l: number;
-  f: number;
-  o: number;
-  e: number | null;
-}
+// interface Response {
+//   msg: string;
+//   L: number;
+//   C: number;
+//   R: number;
+//   G: number;
+// }
 
-const Coaxial = ({ setMostrar }) => {
+const Coaxial = ({ setMostrar, response, setResponse, setResultLay }) => {
   const [datos, setDatos] = useState<Datos>({
     a: null,
     b: null,
@@ -33,7 +32,8 @@ const Coaxial = ({ setMostrar }) => {
     e: 0,
   });
 
-  const enviarInfo = () => {
+
+  const enviarInfo = async () => {
     console.log(datos);
     if (
       datos.a == null ||
@@ -47,9 +47,14 @@ const Coaxial = ({ setMostrar }) => {
     } else if (datos.a > datos.b) {
       alert("El radio externo no puede ser menor al interno.");
     } else {
-      useFetchPost("http://127.0.0.1:8000/coaxial", datos);
+      const respuesta = await useFetchPost("https://backendmedios.onrender.com/coaxial", datos)
+      setResponse(respuesta);
     }
   };
+
+  useEffect(() => {
+    console.log(response);
+  }, [response]);
 
   return (
     <View style={container}>
@@ -123,7 +128,10 @@ const Coaxial = ({ setMostrar }) => {
           keyboardType="numeric"
         />
       </View>
-      <TouchableOpacity style={opcion} onPress={enviarInfo}>
+      <TouchableOpacity style={opcion} onPress={()=>{
+        enviarInfo();
+        setResultLay(true);
+      }}>
         <Text style={texto}>Calcular</Text>
       </TouchableOpacity>
       <BackButton onPress={() => setMostrar(false)} />
