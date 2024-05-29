@@ -6,14 +6,15 @@ import BackButton from "./BackButton";
 const ResultadosCoaxial = ({ setMostrar, response, setResultLay }) => {
   useEffect(() => {
     setMostrar(false);
-  }, []);
+    console.log(response);
+  }, [response]);
 
   return (
     <View>
       <Text style={title}>Parametros obtenidos:</Text>
-      <View style={container}>
-        {response.L == 0 ? (
-          <Text>Cargando..</Text>
+      <View>
+        {response.L === 0 ? (
+          <Text style={texto}>Cargando..</Text>
         ) : (
           <View>
             <Text style={texto}>{response.msg}</Text>

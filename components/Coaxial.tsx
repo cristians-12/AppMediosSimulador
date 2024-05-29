@@ -7,31 +7,21 @@ import {
   title,
 } from "@/constants/Styles";
 import React, { useEffect, useState } from "react";
-import { Button, Text, TextInput, View } from "react-native";
+import { Button, Text, TextInput, View, TouchableOpacity } from "react-native";
 import BackButton from "./BackButton";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import { useFetch, useFetchPost } from "@/hooks/useFetch";
 import { Datos } from "@/constants/datos";
-
-// interface Response {
-//   msg: string;
-//   L: number;
-//   C: number;
-//   R: number;
-//   G: number;
-// }
 
 const Coaxial = ({ setMostrar, response, setResponse, setResultLay }) => {
   const [datos, setDatos] = useState<Datos>({
     a: null,
     b: null,
-    u: 0,
+    u: 1 || null,
     l: 0,
     f: 0,
     o: 0,
     e: 0,
   });
-
 
   const enviarInfo = async () => {
     console.log(datos);
@@ -47,7 +37,10 @@ const Coaxial = ({ setMostrar, response, setResponse, setResultLay }) => {
     } else if (datos.a > datos.b) {
       alert("El radio externo no puede ser menor al interno.");
     } else {
-      const respuesta = await useFetchPost("https://backendmedios.onrender.com/coaxial", datos)
+      const respuesta = await useFetchPost(
+        "https://backendmedios.onrender.com/coaxial",
+        datos
+      );
       setResponse(respuesta);
     }
   };
@@ -60,7 +53,7 @@ const Coaxial = ({ setMostrar, response, setResponse, setResultLay }) => {
     <View style={container}>
       <Text style={title}>Cable Coaxial</Text>
       <View>
-        <Text>Radio interno:</Text>
+        <Text>Radio interno (cm):</Text>
         <TextInput
           placeholder="Ingrese el radio interno"
           onChangeText={(e: string) => {
@@ -72,7 +65,7 @@ const Coaxial = ({ setMostrar, response, setResponse, setResultLay }) => {
         />
       </View>
       <View>
-        <Text>Radio externo:</Text>
+        <Text>Radio externo (cm):</Text>
         <TextInput
           placeholder="Ingrese el radio externo"
           style={input}
@@ -81,16 +74,20 @@ const Coaxial = ({ setMostrar, response, setResponse, setResultLay }) => {
         />
       </View>
       <View>
-        <Text>Permeabilidad relativa:</Text>
+        <Text>Permeabilidad relativa (μ):</Text>
         <TextInput
           placeholder="Ingrese la permeabilidad μ"
           style={input}
-          onChangeText={(e: string) => setDatos({ ...datos, u: parseInt(e) })}
+          value={datos.u !== null ? datos.u.toString() : ""}
+          onChangeText={(e) => {
+            const newValue = e ? parseInt(e) : null;
+            setDatos({ ...datos, u: newValue });
+          }}
           keyboardType="number-pad"
         />
       </View>
       <View>
-        <Text>Longitud:</Text>
+        <Text>Longitud (m): </Text>
         <TextInput
           placeholder="Ingrese la longitud"
           style={input}
@@ -99,7 +96,7 @@ const Coaxial = ({ setMostrar, response, setResponse, setResultLay }) => {
         />
       </View>
       <View>
-        <Text>Frecuencia:</Text>
+        <Text>Frecuencia (Hz): </Text>
         <TextInput
           placeholder="Ingrese la frecuencia"
           onChangeText={(e: string) => setDatos({ ...datos, f: parseInt(e) })}
@@ -108,7 +105,7 @@ const Coaxial = ({ setMostrar, response, setResponse, setResultLay }) => {
         />
       </View>
       <View>
-        <Text>Conductividad del material:</Text>
+        <Text>Conductividad del conductor (σ):</Text>
         <TextInput
           placeholder="Ingrese la conductividad"
           onChangeText={(e: string) => setDatos({ ...datos, o: parseInt(e) })}
@@ -117,7 +114,7 @@ const Coaxial = ({ setMostrar, response, setResponse, setResultLay }) => {
         />
       </View>
       <View>
-        <Text>Permitividad relativa:</Text>
+        <Text>Permitividad relativa (ε) :</Text>
         <TextInput
           placeholder="Ingrese la permitividad e"
           onChangeText={(e: string) => {
@@ -128,10 +125,13 @@ const Coaxial = ({ setMostrar, response, setResponse, setResultLay }) => {
           keyboardType="numeric"
         />
       </View>
-      <TouchableOpacity style={opcion} onPress={()=>{
-        enviarInfo();
-        setResultLay(true);
-      }}>
+      <TouchableOpacity
+        style={opcion}
+        onPress={() => {
+          enviarInfo();
+          setResultLay(true);
+        }}
+      >
         <Text style={texto}>Calcular</Text>
       </TouchableOpacity>
       <BackButton onPress={() => setMostrar(false)} />

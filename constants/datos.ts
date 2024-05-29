@@ -9,7 +9,7 @@ export interface Response {
 export interface Datos {
   b: number | null;
   a: number | null;
-  u: number;
+  u: number | null;
   l: number;
   f: number;
   o: number;
