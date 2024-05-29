@@ -1,4 +1,4 @@
-import { opcion, texto } from '@/constants/Styles'
+import { back, opcion, texto } from '@/constants/Styles'
 import React from 'react'
 import { Text, TouchableOpacity } from 'react-native'
 
@@ -8,8 +8,8 @@ import { Text, TouchableOpacity } from 'react-native'
 
 const BackButton = ({onPress}) => {
   return (
-    <TouchableOpacity style={opcion} onPress={onPress}>
-        <Text style={texto}>Regresar</Text>
+    <TouchableOpacity style={back} onPress={onPress}>
+        <Text style={texto}>{'<'}</Text>
     </TouchableOpacity>
   )
 }

@@ -14,4 +14,14 @@ export interface Datos {
   f: number;
   o: number;
   e: number | null;
+  c: number
+}
+
+export interface DatosP {
+  b: number | null;
+  a: number | null;
+  u: number | null;
+  f: number;
+  o: number;
+  e: number | null;
 }
