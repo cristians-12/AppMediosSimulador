@@ -14,6 +14,7 @@ import React, { useState } from "react";
 import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
 import BackButton from "./BackButton";
 import { Datos, DatosP } from "@/constants/datos";
+import { useFetchPost } from "@/hooks/useFetch";
 
 const Placas = ({ setShowPlaca }) => {
   const [datos, setDatos] = useState<DatosP>({
@@ -24,6 +25,24 @@ const Placas = ({ setShowPlaca }) => {
     o: 0,
     e: 0,
   });
+  const enviarInfo = async () => {
+    if (
+      datos.a == null ||
+      datos.b == null ||
+      datos.u == 0 ||
+      datos.f == 0 ||
+      datos.o == 0
+    ) {
+      alert("No se puede, debe llenar todos los campos");
+    } else if (datos.a > datos.b) {
+      alert("El radio externo no puede ser menor al interno.");
+    } else {
+      const respuesta = await useFetchPost(
+        "https://backendmedios.onrender.com/placas",
+        datos
+      );
+    }
+  };
   return (
     <View style={container}>
       <Text style={title}>Placas paralelas</Text>
@@ -101,7 +120,7 @@ const Placas = ({ setShowPlaca }) => {
       </View>
 
       <View style={btnContainer}>
-        <TouchableOpacity style={opcion} >
+        <TouchableOpacity style={opcion}>
           <Text style={texto}>Calcular</Text>
         </TouchableOpacity>
         <BackButton onPress={() => setShowPlaca(false)} />

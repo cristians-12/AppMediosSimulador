@@ -50,7 +50,7 @@ const Coaxial = ({ setMostrar, response, setResponse, setResultLay }) => {
       alert("El radio externo no puede ser menor al interno.");
     } else {
       const respuesta = await useFetchPost(
-        "http://127.0.0.1:8000/coaxial",
+        "https://backendmedios.onrender.com/coaxial",
         datos
       );
       setResponse(respuesta);
