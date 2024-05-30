@@ -5,6 +5,7 @@ import {
   input,
   inputContainer,
   opcion,
+  opcion1,
   textInput,
   texto,
   texto2,
@@ -18,6 +19,7 @@ import {
   View,
   TouchableOpacity,
   Image,
+  ScrollView,
 } from "react-native";
 import BackButton from "./BackButton";
 import { useFetch, useFetchPost } from "@/hooks/useFetch";
@@ -50,7 +52,8 @@ const Coaxial = ({ setMostrar, response, setResponse, setResultLay }) => {
       alert("El radio externo no puede ser menor al interno.");
     } else {
       const respuesta = await useFetchPost(
-        "https://backendmedios.onrender.com/coaxial",
+        // "https://backendmedios.onrender.com/coaxial",
+        'https://backendmedios.onrender.com/coaxial',
         datos
       );
       setResponse(respuesta);
@@ -63,7 +66,8 @@ const Coaxial = ({ setMostrar, response, setResponse, setResultLay }) => {
   }, [response]);
 
   return (
-    <View style={container}>
+    <ScrollView showsVerticalScrollIndicator={false}>
+          <View style={container}>
       <Text style={title}>Cable Coaxial</Text>
       <Image
         source={require("../assets/images/coaxialGra.png")}
@@ -161,12 +165,13 @@ const Coaxial = ({ setMostrar, response, setResponse, setResultLay }) => {
         />
       </View>
       <View style={btnContainer}>
-        <TouchableOpacity style={opcion} onPress={enviarInfo}>
+        <TouchableOpacity style={opcion1} onPress={enviarInfo}>
           <Text style={texto}>Calcular</Text>
         </TouchableOpacity>
         <BackButton onPress={() => setMostrar(false)} />
       </View>
     </View>
+    </ScrollView>
   );
 };
 

@@ -6,12 +6,13 @@ import {
   input,
   inputContainer,
   opcion,
+  opcion1,
   texto,
   texto2,
   title,
 } from "@/constants/Styles";
 import React, { useState } from "react";
-import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Image, ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
 import BackButton from "./BackButton";
 import { Datos, DatosP } from "@/constants/datos";
 import { useFetchPost } from "@/hooks/useFetch";
@@ -26,7 +27,7 @@ const Placas = ({ setShowPlaca, setResponse, setResultPlaca }) => {
     e: 0,
   });
   const enviarInfo = async () => {
-    console.log(datos)
+    console.log(datos);
     if (
       datos.a == null ||
       datos.b == null ||
@@ -37,17 +38,19 @@ const Placas = ({ setShowPlaca, setResponse, setResultPlaca }) => {
       alert("No se puede, debe llenar todos los campos");
     } else {
       const respuesta = await useFetchPost(
-        "http://127.0.0.1:8000/placas",
+        // "http://127.0.0.1:8000/placas",
+        "https://backendmedios.onrender.com/placas",
         datos
       );
-      console.log(respuesta)
+      console.log(respuesta);
       setResponse(respuesta);
       setShowPlaca(false);
-      setResultPlaca(true)
+      setResultPlaca(true);
     }
   };
   return (
-    <View style={container}>
+    <ScrollView showsVerticalScrollIndicator={false}>
+          <View style={container}>
       <Text style={title}>Placas paralelas</Text>
       <Image source={require("../assets/images/placas.png")} style={imagen1} />
 
@@ -120,12 +123,13 @@ const Placas = ({ setShowPlaca, setResponse, setResultPlaca }) => {
       </View>
 
       <View style={btnContainer}>
-        <TouchableOpacity onPress={enviarInfo} style={opcion}>
+        <TouchableOpacity onPress={enviarInfo} style={opcion1}>
           <Text style={texto}>Calcular</Text>
         </TouchableOpacity>
         <BackButton onPress={() => setShowPlaca(false)} />
       </View>
     </View>
+    </ScrollView>
   );
 };
 

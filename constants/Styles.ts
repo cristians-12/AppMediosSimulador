@@ -42,7 +42,7 @@ export const input = {
   borderWidth: 1,
   borderColor: "gray",
   borderRadius: 20,
-  width: '100px',
+  width: 100,
   padding: 5,
   fontFamily: "Poppins",
   height: 'fit-content'
@@ -56,7 +56,19 @@ export const opcion = {
   color: "white",
   margin: 10,
   alignItems: "center",
-  width: "100%",
+  width: "90%",
+  // flex: 1,
+  justifyContent: "center",
+};
+
+export const opcion1 = {
+  backgroundColor: "#9b40bf",
+  borderRadius: 20,
+  padding: 10,
+  color: "white",
+  margin: 10,
+  alignItems: "center",
+  width: "50%",
   // flex: 1,
   justifyContent: "center",
 };
@@ -72,7 +84,7 @@ export const back ={
 export const inputContainer: ViewStyle = {
   flex: 1,
   flexDirection: 'row',
-  height: 100,
+  marginVertical: 10,
   alignItems: 'center',
   justifyContent: 'center', 
   gap: 20,
@@ -83,5 +95,6 @@ export const btnContainer: ViewStyle = {
   flexDirection: 'row',
   height: 100,
   alignItems: 'center',
-  justifyContent: 'center'
+  justifyContent: 'center',
+  width: '100%'
 };
