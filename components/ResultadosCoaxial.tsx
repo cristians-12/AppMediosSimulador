@@ -18,16 +18,18 @@ const ResultadosCoaxial = ({ setMostrar, response, setResultLay }) => {
         ) : (
           <View>
             <Text style={texto}>{response.msg}</Text>
-            <Text style={texto}>Inductancia: {response.L}</Text>
-            <Text style={texto}>Capacitancia: {response.C}</Text>
+            <Text style={texto}>Inductancia: {response.L} H/m</Text>
+            <Text style={texto}>Capacitancia: {response.C} C/m</Text>
             <Text style={texto}>Resistividad: {response.R}</Text>
             <Text style={texto}>Conductancia: {response.G}</Text>
           </View>
         )}
-        <BackButton onPress={()=>{
+        <BackButton
+          onPress={() => {
             setResultLay(false);
             setMostrar(true);
-        }} />
+          }}
+        />
       </View>
     </View>
   );

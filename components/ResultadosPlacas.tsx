@@ -1,12 +1,27 @@
-import React from 'react'
-import { View } from 'react-native'
+import { texto } from "@/constants/Styles";
+import React from "react";
+import { Text, View } from "react-native";
+import BackButton from "./BackButton";
 
-const ResultadosPlacas = () => {
+const ResultadosPlacas = ({ response, setResultPlaca, setShowPlaca }) => {
   return (
     <View>
-        
+      {response ? (
+        <View>
+          <Text style={texto}>Inductancia: {response.L} H/m</Text>
+          <Text style={texto}>Capacitancia: {response.C} C/m</Text>
+          <Text style={texto}>Resistividad: {response.R}</Text>
+          <Text style={texto}>Conductancia: {response.G}</Text>
+        </View>
+      ) : (
+        <Text>Cargando..</Text>
+      )}
+      <BackButton onPress={()=>{
+        setResultPlaca(false)
+        setShowPlaca(true)
+      }} />
     </View>
-  )
-}
+  );
+};
 
-export default ResultadosPlacas
+export default ResultadosPlacas;

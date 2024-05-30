@@ -16,7 +16,7 @@ import BackButton from "./BackButton";
 import { Datos, DatosP } from "@/constants/datos";
 import { useFetchPost } from "@/hooks/useFetch";
 
-const Placas = ({ setShowPlaca }) => {
+const Placas = ({ setShowPlaca, setResponse, setResultPlaca }) => {
   const [datos, setDatos] = useState<DatosP>({
     a: null,
     b: null,
@@ -26,6 +26,7 @@ const Placas = ({ setShowPlaca }) => {
     e: 0,
   });
   const enviarInfo = async () => {
+    console.log(datos)
     if (
       datos.a == null ||
       datos.b == null ||
@@ -34,13 +35,15 @@ const Placas = ({ setShowPlaca }) => {
       datos.o == 0
     ) {
       alert("No se puede, debe llenar todos los campos");
-    } else if (datos.a > datos.b) {
-      alert("El radio externo no puede ser menor al interno.");
     } else {
       const respuesta = await useFetchPost(
-        "https://backendmedios.onrender.com/placas",
+        "http://127.0.0.1:8000/placas",
         datos
       );
+      console.log(respuesta)
+      setResponse(respuesta);
+      setShowPlaca(false);
+      setResultPlaca(true)
     }
   };
   return (
@@ -54,7 +57,7 @@ const Placas = ({ setShowPlaca }) => {
           placeholder="b"
           onChangeText={(e: string) => {
             const newValue = e ? parseFloat(e.replace(",", ".")) : null;
-            setDatos({ ...datos, a: newValue });
+            setDatos({ ...datos, b: newValue });
           }}
           style={input}
           keyboardType="number-pad"
@@ -75,11 +78,8 @@ const Placas = ({ setShowPlaca }) => {
       <View style={inputContainer}>
         <Text style={texto2}>Frecuencia (Hz):</Text>
         <TextInput
-          placeholder="Frecuencia"
-          onChangeText={(e: string) => {
-            const newValue = e ? parseFloat(e.replace(",", ".")) : null;
-            setDatos({ ...datos, a: newValue });
-          }}
+          placeholder="Ingrese la frecuencia"
+          onChangeText={(e: string) => setDatos({ ...datos, f: parseInt(e) })}
           style={input}
           keyboardType="number-pad"
         />
@@ -120,7 +120,7 @@ const Placas = ({ setShowPlaca }) => {
       </View>
 
       <View style={btnContainer}>
-        <TouchableOpacity style={opcion}>
+        <TouchableOpacity onPress={enviarInfo} style={opcion}>
           <Text style={texto}>Calcular</Text>
         </TouchableOpacity>
         <BackButton onPress={() => setShowPlaca(false)} />

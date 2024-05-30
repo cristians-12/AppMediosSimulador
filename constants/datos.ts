@@ -6,6 +6,8 @@ export interface Response {
   G: number;
 }
 
+
+
 export interface Datos {
   b: number | null;
   a: number | null;
@@ -14,7 +16,7 @@ export interface Datos {
   f: number;
   o: number;
   e: number | null;
-  c: number
+  c: number | null
 }
 
 export interface DatosP {
