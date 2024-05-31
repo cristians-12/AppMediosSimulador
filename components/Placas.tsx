@@ -52,7 +52,7 @@ const Placas = ({ setShowPlaca, setResponse, setResultPlaca }) => {
     <ScrollView showsVerticalScrollIndicator={false}>
           <View style={container}>
       <Text style={title}>Placas paralelas</Text>
-      <Image source={require("../assets/images/placas.png")} style={imagen1} />
+      <Image source={require("../assets/images/placas.png")} style={imagen1} resizeMode="contain" />
 
       <View style={inputContainer}>
         <Text style={texto2}>Largo de placas (cm):</Text>

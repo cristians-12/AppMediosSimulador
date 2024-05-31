@@ -10,8 +10,8 @@ const ResultadosPlacas = ({ response, setResultPlaca, setShowPlaca }) => {
         <View>
           <Text style={texto}>Inductancia: {response.L} H/m</Text>
           <Text style={texto}>Capacitancia: {response.C} C/m</Text>
-          <Text style={texto}>Resistividad: {response.R}</Text>
-          <Text style={texto}>Conductancia: {response.G}</Text>
+          <Text style={texto}>Resistividad: {response.R} Ω/m</Text>
+          <Text style={texto}>Conductancia: {response.G} ℧/m</Text>
         </View>
       ) : (
         <Text>Cargando..</Text>

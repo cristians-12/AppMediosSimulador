@@ -17,6 +17,8 @@ export interface Datos {
   o: number;
   e: number | null;
   c: number | null
+  longitud: number[],
+  atenuacion: number[]
 }
 
 export interface DatosP {

@@ -30,7 +30,7 @@ export const imagen = {
   height: 200,
 };
 export const imagen1 = {
-  width: 320,
+  width: 250,
   height: 200,
 };
 

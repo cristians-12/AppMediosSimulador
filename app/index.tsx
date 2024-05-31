@@ -26,6 +26,7 @@ export default function Index() {
     C: 0,
     R: 0,
     G: 0,
+    
   });
 
   return (

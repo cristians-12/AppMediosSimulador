@@ -6,7 +6,7 @@ import BackButton from "./BackButton";
 const ResultadosCoaxial = ({ setMostrar, response, setResultLay }) => {
   useEffect(() => {
     setMostrar(false);
-    console.log(response);
+    // console.log(response);
   }, [response]);
 
   return (
@@ -20,8 +20,8 @@ const ResultadosCoaxial = ({ setMostrar, response, setResultLay }) => {
             <Text style={texto}>{response.msg}</Text>
             <Text style={texto}>Inductancia: {response.L} H/m</Text>
             <Text style={texto}>Capacitancia: {response.C} C/m</Text>
-            <Text style={texto}>Resistividad: {response.R}</Text>
-            <Text style={texto}>Conductancia: {response.G}</Text>
+            <Text style={texto}>Resistividad: {response.R} Ω/m</Text>
+            <Text style={texto}>Conductancia: {response.G} ℧/m</Text>
           </View>
         )}
         <BackButton
