@@ -24,7 +24,7 @@ import {
 import BackButton from "./BackButton";
 import { useFetch, useFetchPost } from "@/hooks/useFetch";
 import { Datos } from "@/constants/datos";
-import { GraficaContext, GraficaProvider } from "@/app/context";
+import { GraficaContext, GraficaProvider } from "@/context/context";
 
 const Coaxial = ({ setMostrar, response, setResponse, setResultLay }) => {
   const { setValores, valores } = useContext(GraficaContext);
@@ -57,8 +57,8 @@ const Coaxial = ({ setMostrar, response, setResponse, setResultLay }) => {
     } else {
       setResultLay(true);
       const respuesta = await useFetchPost(
-        "http://127.0.0.1:8000/coaxial",
-        // 'https://backendmedios.onrender.com/coaxial',
+        // "http://127.0.0.1:8000/coaxial",
+        'https://backendmedios.onrender.com/coaxial',
         datos
       );
       setResponse(respuesta);

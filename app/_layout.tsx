@@ -3,13 +3,18 @@ import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { useFonts } from "expo-font";
 import { barra } from "@/constants/Styles";
 import { BlurView } from "expo-blur";
-import { GraficaProvider } from "./context";
+import { GraficaProvider } from "../context/context";
+import AppLoading from "@/components/AppLoading";
 
 export default function RootLayout() {
-  useFonts({
+  let [fontLoaded] = useFonts({
     Poppins: require("../assets/fonts/Poppins-Medium.ttf"),
     PoppinsBold: require("../assets/fonts/Poppins-Bold.ttf"),
   });
+
+  if(!fontLoaded){
+    return <AppLoading/>
+  }
 
   return (
     <GraficaProvider>

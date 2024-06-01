@@ -1,6 +1,6 @@
-import { container, container1, texto, title } from "@/constants/Styles";
+import { container, container1, imagen, imagen1, texto, title } from "@/constants/Styles";
 import React, { useEffect } from "react";
-import { Text, View } from "react-native";
+import { Image, Text, View } from "react-native";
 import BackButton from "./BackButton";
 
 const ResultadosCoaxial = ({ setMostrar, response, setResultLay }) => {
@@ -10,7 +10,7 @@ const ResultadosCoaxial = ({ setMostrar, response, setResultLay }) => {
   }, [response]);
 
   return (
-    <View>
+    <View style={container}>
       <Text style={title}>Parametros obtenidos:</Text>
       <View>
         {response.L === 0 ? (
@@ -31,6 +31,7 @@ const ResultadosCoaxial = ({ setMostrar, response, setResultLay }) => {
           }}
         />
       </View>
+      <Image source={require('../assets/images/coaxi-transparencia.png')} resizeMode="contain" style={{...imagen, marginTop:20}} />
     </View>
   );
 };

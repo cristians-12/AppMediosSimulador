@@ -11,13 +11,15 @@ import {
   texto2,
   title,
 } from "@/constants/Styles";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Image, ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
 import BackButton from "./BackButton";
 import { Datos, DatosP } from "@/constants/datos";
 import { useFetchPost } from "@/hooks/useFetch";
+import { GraficaContext } from "@/context/context";
 
 const Placas = ({ setShowPlaca, setResponse, setResultPlaca }) => {
+  const {setValores, valores} = useContext(GraficaContext)
   const [datos, setDatos] = useState<DatosP>({
     a: null,
     b: null,
@@ -44,6 +46,7 @@ const Placas = ({ setShowPlaca, setResponse, setResultPlaca }) => {
       );
       console.log(respuesta);
       setResponse(respuesta);
+      setValores({ longitud: respuesta.longitud, atenuacion: respuesta.atenuacion });
       setShowPlaca(false);
       setResultPlaca(true);
     }

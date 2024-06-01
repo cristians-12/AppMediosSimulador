@@ -1,6 +1,6 @@
 import { container, texto, title } from "@/constants/Styles";
 import React, { useContext } from "react";
-import { Text, View } from "react-native";
+import { Text, View, Dimensions } from "react-native";
 import {
   LineChart,
   BarChart,
@@ -9,8 +9,7 @@ import {
   ContributionGraph,
   StackedBarChart,
 } from "react-native-chart-kit";
-import { Dimensions } from "react-native";
-import { GraficaContext, GraficaProvider } from "../context";
+import { GraficaContext, GraficaProvider } from "../../context/context";
 
 const index = () => {
   const { valores } = useContext(GraficaContext);
@@ -40,6 +39,7 @@ const index = () => {
             height={600}
             yAxisLabel=""
             yAxisSuffix="dB"
+            xAxisLabel="mts"
             yAxisInterval={1} // optional, defaults to 1
             chartConfig={{
               backgroundColor: "#e26a00",
