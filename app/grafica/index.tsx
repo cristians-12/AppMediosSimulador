@@ -1,6 +1,6 @@
 import { container, texto, title } from "@/constants/Styles";
 import React, { useContext } from "react";
-import { Text, View, Dimensions } from "react-native";
+import { Text, View, Dimensions, ScrollView } from "react-native";
 import { LineChart } from "react-native-chart-kit";
 import {
   Chart,
@@ -20,12 +20,12 @@ const index = () => {
       {valores.longitud.length === 0 ? (
         <Text>No hay valores que graficar</Text>
       ) : (
-        <View style={container}>
+        <ScrollView style={container}>
           <Text style={title}>Perdidas en decibeles</Text>
           {valores.atenuacion.map((e) => (
             <Text style={texto}>{e} dB/m</Text>
           ))}
-        </View>
+        </ScrollView>
 
         // <View>
         //   <LineChart
